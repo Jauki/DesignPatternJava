@@ -11,8 +11,11 @@ public class TheOneAndOnly {
     }
 
     public static TheOneAndOnly getTheInstance() {
-        if(theInstance == null) {
-            theInstance = new TheOneAndOnly();
+        // When Threads are needed
+        synchronized (TheOneAndOnly.class) {
+            if (theInstance == null) {
+                theInstance = new TheOneAndOnly();
+            }
         }
         return theInstance;
     }
